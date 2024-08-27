@@ -3,15 +3,13 @@ module "mypythonapp" {
   name      = "python"
   namespace = "python-namespace"
   chart     = "../myapp"
-  values    = [
-    <<EOF
+  values    = [<<EOF
 replicaCount: 2
 image:
   repository: nginx
   pullPolicy: IfNotPresent
   tag: "latest"
-EOF
-  ]
+EOF]
 }
 
 module "mygoapp" {
@@ -19,13 +17,11 @@ module "mygoapp" {
   name      = "go"
   namespace = "go-namespace"
   chart     = "../myapp"
-  values    = [
-    <<EOF
+  values    = [<<EOF
 replicaCount: 2
 image:
   repository: nginx
   pullPolicy: IfNotPresent
   tag: "latest"
-EOF
-  ]
+EOF]
 }
