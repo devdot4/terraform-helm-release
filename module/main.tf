@@ -1,27 +1,17 @@
 module "mypythonapp" {
-  source    = "../terraform"
+  source  = "devdot4/release/helm"
+  version = "0.0.2"
   name      = "python"
   namespace = "python-namespace"
-  chart     = "../myapp"
-  values    = [<<EOF
-replicaCount: 2
-image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  tag: "latest"
-EOF]
-}
 
-module "mygoapp" {
-  source    = "../terraform"
-  name      = "go"
-  namespace = "go-namespace"
-  chart     = "../myapp"
-  values    = [<<EOF
-replicaCount: 2
+  values = [
+    <<EOF
+replicaCount: 1
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
   tag: "latest"
-EOF]
+EOF
+  ]
 }
